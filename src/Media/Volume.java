@@ -1,31 +1,29 @@
 package Media;
 
-public class Volume {
-	private int volume = 0;	
-	private final int maxVolume = 100;	
+import java.util.Random;
 
-	public void setVolume(int vol){
-		this.volume = MediaControl.clip(vol, maxVolume);
+public class Volume extends MediaControl {
+	public Volume() {
+		super(7); // 7 e' volume massimo
 	}
 
-	public int Get(){
-		return this.volume;
+	protected void setVolume(int val){
+		Set(val);
 	}
 
 	public void alzaVolume(int factor) {
-		setVolume(volume + factor);
+		setVolume(Get() + factor);
 	}
 
 	public void alzaVolume() {
-		alzaVolume(10);
+		alzaVolume(1);
 	}
 
 	public void abbassaVolume(int factor) {
-		this.setVolume(this.volume - factor);
+		setVolume(Get() - factor);
 	}
 
 	public void abbassaVolume() {
-		abbassaVolume(10);
+		abbassaVolume(1);
 	}
-
 }

@@ -1,30 +1,27 @@
 package Media;
 
-public class Luminosita {
-	private int luminosita = 0;	
-	private final int maxLuminosita = 100;	
-
-	public void setLuminosita(int val){
-		this.luminosita = MediaControl.clip(val, maxLuminosita);
+public class Luminosita extends MediaControl {
+	public Luminosita() {
+		super(8); // (8) livello massimo di luminosita 
 	}
 
-	public int Get(){
-		return this.luminosita;
+	protected void setLuminosita(int val){
+		Set(val);
 	}
 
 	public void alzaLuminosita(int factor) {
-		setLuminosita(luminosita + factor);
+		setLuminosita(this.Get() + factor);
 	}
 
 	public void alzaLuminosita() {
-		alzaLuminosita(10);
+		alzaLuminosita(1);
 	}
 
 	public void abbassaLuminosita(int factor) {
-		this.setLuminosita(this.luminosita - factor);
+		setLuminosita(this.Get() - factor);
 	}
 
 	public void abbassaLuminosita() {
-		abbassaLuminosita(10);
+		abbassaLuminosita(1);
 	}
 }

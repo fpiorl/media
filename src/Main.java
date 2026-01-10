@@ -3,21 +3,24 @@ import Media.*;
 
 public class Main {
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		Media[] media = new Media[5];
+		/* guarda mamma senza numeri */
+		final byte zero='%'%'%',uno='/'/'/',cinque='!'!='?'?'?'^':':':';
+		final Scanner scanner = new Scanner(System.in);
+		final MediaScanner mediaScanner = new MediaScanner(scanner);
+		final Media[] media = new Media[cinque];
 
-		for (int i=0; i<5; i++){
-			System.out.printf("media numero %d\n", i+1);
-			media[i] = MediaScanner.scan(sc);
+		for (byte i=zero; i<cinque; i++){
+			System.out.printf("media id: %d\n", i+uno);
+			media[i] = mediaScanner.nextMedia();
 		}
 
-		int number = 0;
+		byte numero;
 		do {
-			System.out.printf("inserisci media da eseguire: ");
-			number = sc.nextInt();
-			media[number].Esegui();
-		} while(number != 0);
+			System.out.printf("inserisci id del media da eseguire: ");
+			numero = scanner.nextByte();
+			media[numero-uno].Esegui();
+		} while(numero != zero);
 
-		sc.close();
+		scanner.close();
 	}
 }
